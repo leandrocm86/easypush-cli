@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.example</groupId>
+  <groupId>lcm.lanpush</groupId>
   <artifactId>lanpush-cli</artifactId>
   <version>1.0</version>
   <build>
   	<finalName>${project.name}</finalName>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -16,26 +16,17 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
+        <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
           <archive>
-          <manifest>
-            <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>lanpush.cli.Lanpush</mainClass>
-          </manifest>
-        </archive>
+              <manifest>
+                  <addClasspath>true</addClasspath>
+                  <classpathPrefix>libs/</classpathPrefix>
+                  <mainClass>
+                      lanpush.cli.Lanpush
+                  </mainClass>
+              </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
