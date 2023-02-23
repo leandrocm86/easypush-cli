@@ -1,0 +1,56 @@
+# Execute with 'snapcraft' when inside the project's root folder.
+# The resulting snap can then be installed with 'sudo snap install lanpush-cli_x.y.z_amd64.snap --devmode --dangerous'
+
+name: lanpush-cli # you probably want to 'snapcraft register <name>'
+base: core20 # the base snap is the execution environment for this snap
+version: '1.0.1'
+summary: Utility to exchange text messages between devices in the same local network.
+description: |
+  This is the CLI version (terminal only) client for LANPUSH.
+  With LANPUSH all devices in the same LAN can read and write messages between themselves.
+  No internet or login required!
+  Run lanpush-cli --help for usage info.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+  lanpush-cli:
+    command: lanpush-cli.sh
+    plugs:
+      - network
+    environment:
+      JAVA_HOME: $SNAP/usr/lib/jvm/default-java
+      PATH: $JAVA_HOME/bin:$PATH
+
+# --- CONFIGURATION FOR LOCAL BUILD ---
+parts:
+  lanpush-cli:   
+    plugin: dump
+    source: target/
+    stage-packages:
+       - default-jre-headless
+  
+  launcher:
+    plugin: dump
+    source: snap/local/
+    
+# --- CONFIGURATION FOR MAVEN BUILD FROM REPOSITORY ---
+# MAVEN WAS DISCONTINUED IN CORE 20, BUT IS COMING BACK IN CORE 22 (NOT STABLE YET)
+# DISCUSSION: https://forum.snapcraft.io/t/maven-plugin-missing-in-core20/29044/15
+# parts:
+#   lanpush-cli:
+#     plugin: maven
+#     source: https://github.com/leandrocm86/lanpush-cli.git
+#     source-type: git
+#     # source_tag: master
+#     maven-parameters: # maven-options (core 18) changed to maven-parameters (core 22)
+#       [-DskipTests=true]
+#     organize:
+#       ../target/: target/
+#       ../snap/local/: wrapper/
+#     build-packages:
+#       - default-jdk-headless
+#       - maven
+#     stage-packages:
+#       - default-jre-headless
