@@ -1,9 +1,9 @@
 # Execute with 'snapcraft' when inside the project's root folder.
 # The resulting snap can then be installed with 'sudo snap install lanpush-cli_x.y.z_amd64.snap --devmode --dangerous'
 
-name: lanpush-cli # you probably want to 'snapcraft register <name>'
+name: lanpush # you probably want to 'snapcraft register <name>'
 base: core20 # the base snap is the execution environment for this snap
-version: '1.0.1'
+version: '1.0.2'
 summary: Utility to exchange text messages between devices in the same local network.
 description: |
   This is the CLI version (terminal only) client for LANPUSH.
@@ -15,7 +15,7 @@ grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
 apps:
-  lanpush-cli:
+  lanpush:
     command: lanpush-cli.sh
     plugs:
       - network
@@ -25,7 +25,7 @@ apps:
 
 # --- CONFIGURATION FOR LOCAL BUILD ---
 parts:
-  lanpush-cli:   
+  lanpush:   
     plugin: dump
     source: target/
     stage-packages:
