@@ -69,10 +69,10 @@ public final class Lanpush {
             System.out.println("[LANPUSH] Starting to listen for messages on port " + portNumber);
             
             Receiver receiver = new Receiver();
-            Runnable shutdownProcedure = () -> {System.out.println("[LANPUSH] Received shutdown signal. Listener will be closed.");};
+            setShutdownProcedure(receiver);
             String receivedMessage;
             try {
-                while((receivedMessage = receiver.listen(portNumber, shutdownProcedure)) != null) {
+                while((receivedMessage = receiver.listen(portNumber)) != null) {
                     System.out.println("[LANPUSH] Message received: " + receivedMessage);
                 }
             } catch (Throwable t) {
@@ -80,6 +80,16 @@ public final class Lanpush {
             }
         }
     }
+
+    private static void setShutdownProcedure(Receiver receiver) {
+		Thread shutdown = new Thread(new Runnable() {
+			public void run() {
+                receiver.stop();
+				System.out.println("[LANPUSH] Received shutdown signal. Listener was closed.");
+			}
+		}, "Shutdown-thread");
+		Runtime.getRuntime().addShutdownHook(shutdown);
+	}
 
     private static void senderMode(List<String> sysArgs) {
 

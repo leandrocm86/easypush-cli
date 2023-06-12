@@ -17,17 +17,13 @@ public class Receiver {
 	/**
 	 * Starts listenning on the given port until there is a message to return or #stop() is invoked.
 	 * It's recommended to call this method in a separated thread if the current thread cannot be block.
-	 * The receiver will automatically disconnect itself upon an abrupt shutdown signal,
-	 * and then it will execute the given shutdown procedure (if any).
 	 * 
 	 * @param udpPort - The UDP port number to listen to.
-	 * @param shutdownProcedure - Procedure to be executed upon program termination.
 	 * 
 	 * @return the first received message, or null if #stop() was invoked.
 	 */
-    public String listen(int udpPort, Runnable shutdownProcedure) throws SocketException, IOException {
+    public String listen(int udpPort) throws SocketException, IOException {
 		this.stopSignal = false;
-		this.setShutdownProcedure(shutdownProcedure);
 		try {
 			DatagramPacket packet = reconnect(udpPort);
 			udpSocket.receive(packet);
@@ -68,14 +64,4 @@ public class Receiver {
 		}
     }
 
-	private void setShutdownProcedure(Runnable shutdownProcedure) {
-		Thread shutdown = new Thread(new Runnable() {
-			public void run() {
-				stop();
-				if (shutdownProcedure != null)
-					shutdownProcedure.run();
-			}
-		}, "Shutdown-thread");
-		Runtime.getRuntime().addShutdownHook(shutdown);
-	}
 }
