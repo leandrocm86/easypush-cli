@@ -22,8 +22,8 @@ LANPUSH's CLI client can easily be installed via snap (Linux) with
 ```
 sudo snap install lanpush
 ```
-This way, it already has a built-in Java jvm and is ready to go by simply calling "lanpush" as a command.
-If you prefer to save a few megabytes and run it with your own jvm, simply download the JAR file from the [latest release](https://github.com/leandrocm86/lanpush/releases/latest) and run it with
+This way, it already has a built-in Java jvm and is ready to go by simply calling "lanpush" as a command.<br>
+If you prefer to save a few megabytes and run it with your own jvm, simply download the JAR file from the [latest release](https://github.com/leandrocm86/lanpush-cli/releases/latest) and run it with
 ```
 java -jar lanpush-cli.jar
 ```
@@ -35,13 +35,15 @@ All projects are free, open sourced and open to suggestions.
 
 #### Usage:
 LANPUSH's CLI client can be used in two ways: sender mode and reader mode.<br>
-Sender mode: lanpush <IPs>:<PORT> <message>. Example: <br>
+Sender mode: **lanpush \<IPs\>:\<PORT\> \<message\>** <br>
+Example:
 ```
 lanpush 192.168.0.255:1050 'Hello world!'
 ```
 On Sender mode, clients with the IPs informed (comma separated) will receive the text if they are listening on the port informed. Consider using a broadcast IP if you have many devices. <br>
 
-Receiver mode: lanpush --listen <PORT>. Example: <br>
+Receiver mode: **lanpush --listen \<PORT\>** <br>
+Example:
 ```
 lanpush --listen 1050
 ```
