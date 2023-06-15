@@ -1,18 +1,19 @@
 # Execute with 'snapcraft' when inside the project's root folder.
-# The resulting snap can then be installed with 'sudo snap install lanpush-cli_x.y.z_amd64.snap --devmode --dangerous'
+# The resulting snap can then be installed with 'sudo snap install lanpush-cli_x.y.z_amd64.snap' # additional flags for development:--devmode --dangerous
+# To publish the snap, run 'snapcraft push lanpush-cli_<version>_<arch>.snap'
 
 name: lanpush # you probably want to 'snapcraft register <name>'
 base: core20 # the base snap is the execution environment for this snap
-version: '1.0.2'
+version: '1.0.5'
 summary: Utility to exchange text messages between devices in the same local network.
 description: |
   This is the CLI version (terminal only) client for LANPUSH.
   With LANPUSH all devices in the same LAN can read and write messages between themselves.
   No internet or login required!
-  Run lanpush-cli --help for usage info.
+  Run "lanpush --help" for usage info.
 
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+grade: stable # must be 'stable' to release into candidate/stable channels, or 'devel' to release into development channels
+confinement: strict # use 'strict' once you have the right plugs and slots, or 'devmode' for development only
 
 apps:
   lanpush:
@@ -28,8 +29,14 @@ parts:
   lanpush:   
     plugin: dump
     source: target/
+    build-packages:
+      - ca-certificates
+      - ca-certificates-java
     stage-packages:
        - default-jre-headless
+    override-build: |
+      snapcraftctl build
+      rm $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blacklisted.certs # removing symlink to external file
   
   launcher:
     plugin: dump

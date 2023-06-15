@@ -33,7 +33,8 @@ public final class Lanpush {
     }
 
     private static void printHelp() {
-        String helpMsg = "-------------------------------------------------------------------------\n"
+        String helpMsg = 
+                  "-------------------------------------------------------------------------\n"
                 + "                                 LANPUSH                                 \n"
                 + "-------------------------------------------------------------------------\n"
                 + "Usage for listener mode: lanpush [-l | --listen] <PORT>\n"
@@ -41,7 +42,10 @@ public final class Lanpush {
                 + "-------------------------------------------------------------------------\n"
                 + "Usage for sending message: lanpush <IPs>:<PORT> <MESSAGE>\n"
                 + "Multiple IPs can be used separated by comma\n"
-                + "Example for sending: lanpush 192.168.0.255,192.168.0.1:1050 \"Hello, world!\"\n"
+                + "Example for sending: lanpush 192.168.0.255,192.168.0.1:1050 \"Hi, world!\"\n"
+                + "-------------------------------------------------------------------------\n"
+                + "For more information about this app or its siblings (desktop or android),\n"
+                + "check its github repository: https://github.com/leandrocm86/lanpush-cli\n"
                 + "-------------------------------------------------------------------------\n";
         System.out.println(helpMsg);
     }
@@ -106,3 +110,26 @@ public final class Lanpush {
         }
     }
 }
+
+/*
+MMMMMMMMMWXOo:'.        .';oOXWMMMMMMMMM
+MMMMMMMW0l' .':ldkOOOOkdl:'. 'l0WMMMMMMM
+MMMMMW0c. 'lONWMWWNNNNWWMWNOl' .c0WMMMMM
+MMMMWx. .oXWMNOo:,'..',:oONMWXo. .xWMMMM
+MMMWx. ,0WMNd,  ':cllc:'  ,dNMW0, .xWMMM
+MMMO' '0MMK: .:kNWWWWWWNk:. :KMM0' 'OMMM
+MMNl .dWMNc .oNMKo;,,;oKMNo. cNMWd. lNMM
+MMX: .OMM0' ,KMX:      :XMK, '0MMO. :XMM
+MMX: .kMM0' '0MNl      lNM0' '0MMk. :XMM
+MMWo  oWMNo  :KMK,    ,KMX:  oNMWl  oWMM
+MMM0, .kWMXo. ;Kk.    .kK; .oXMWk. ,0MMM
+MMMWO' .xNMW0dkKc .''. cKkd0WMNx. 'OWMMM
+MMMMW0; .cKMMMMk. .::. .kMMMMKc. ;0WMMMM
+MMMMMMXd;:0MMMNc  '..   cNMMM0:;dXMMMMMM
+MMMMMMMMWWMMMMO.  'cdo' .OMMMMWWMMMMMMMM
+MMMMMMMMMMMMMNl  .,cl:.  lNMMMMMMMMMMMMM
+MMMMMMMMMMMMM0' 'kOc,,,. 'OMMMMMMMMMMMMM
+MMMMMMMMMMMMWo  :d:cdOXo  oWMMMMMMMMMMMM
+MMMMMMMMMMMM0'  . .;:::'  '0MMMMMMMMMMMM
+MMMMMMMMMMMMx.            .xMMMMMMMMMMMM
+ */
