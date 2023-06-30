@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Receivers can connect to a given UDP port and listen for any messages arriving through it.
@@ -27,7 +28,7 @@ public class Receiver {
 		try {
 			DatagramPacket packet = reconnect(udpPort);
 			udpSocket.receive(packet);
-			return new String(packet.getData(), 0, packet.getLength()).trim();
+			return new String(packet.getData(), 0, packet.getLength(), StandardCharsets.UTF_8).trim();
 		} catch (Throwable t) {
 			if (!stopSignal) {
 				throw t;

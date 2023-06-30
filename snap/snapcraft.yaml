@@ -4,7 +4,7 @@
 
 name: lanpush # you probably want to 'snapcraft register <name>'
 base: core20 # the base snap is the execution environment for this snap
-version: '1.0.5'
+version: '1.0.6'
 summary: Utility to exchange text messages between devices in the same local network.
 description: |
   This is the CLI version (terminal only) client for LANPUSH.

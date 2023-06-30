@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
 
 
 /**
@@ -25,7 +26,7 @@ public class Sender {
 	        InetAddress address = InetAddress.getByName(host.toString());
 	
 	        // Initialize a datagram packet with data and address
-	        DatagramPacket packet = new DatagramPacket(message.getBytes(), message.getBytes().length, address, udpPort);
+	        DatagramPacket packet = new DatagramPacket(message.getBytes(StandardCharsets.UTF_8), message.getBytes().length, address, udpPort);
 	
 	        // Create a datagram socket, send the packet through it, close it.
 	        DatagramSocket dsocket = new DatagramSocket();
