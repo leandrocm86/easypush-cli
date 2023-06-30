@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -jar $SNAP/lanpush-cli.jar "$@"
+$SNAP/usr/lib/jvm/default-java/bin/java -jar $SNAP/lanpush-cli.jar "$@"
