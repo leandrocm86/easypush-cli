@@ -76,9 +76,8 @@ public final class Lanpush {
             setShutdownProcedure(receiver);
             String receivedMessage;
             try {
-                while((receivedMessage = receiver.listen(portNumber)) != null) {
-                    System.out.println("[LANPUSH] Message received: " + receivedMessage);
-                }
+                receivedMessage = receiver.listen(portNumber);
+                System.out.println("[LANPUSH] Message received: " + receivedMessage);
             } catch (Throwable t) {
                 System.err.printf("[LANPUSH ERROR] Couldn't keep connection on port %d. Listener will shutdown.\n", portNumber);
             }
