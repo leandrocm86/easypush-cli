@@ -23,7 +23,7 @@ public final class Lanpush {
         else if (sysArgs.contains("-l") || sysArgs.contains("--listen")) {
             listenerMode(sysArgs);
         }
-        else if (sysArgs.size() == 2 && sysArgs.get(0).contains(":"))  {
+        else if (sysArgs.size() == 2 && sysArgs.get(0).contains("@"))  {
            senderMode(sysArgs);
         }
         else {
@@ -40,9 +40,9 @@ public final class Lanpush {
                 + "Usage for listener mode: lanpush [-l | --listen] <PORT>\n"
                 + "Example for listening on UDP port 1050: lanpush -l 1050\n"
                 + "-------------------------------------------------------------------------\n"
-                + "Usage for sending message: lanpush <IPs>:<PORT> <MESSAGE>\n"
+                + "Usage for sending message: lanpush <IPs>@<PORT> <MESSAGE>\n"
                 + "Multiple IPs can be used separated by comma\n"
-                + "Example for sending: lanpush 192.168.0.255,192.168.0.1:1050 \"Hi, world!\"\n"
+                + "Example for sending: lanpush 192.168.0.255,192.168.0.1@1050 \"Hi, world!\"\n"
                 + "-------------------------------------------------------------------------\n"
                 + "For more information about this app or its siblings (desktop or android),\n"
                 + "check its github repository: https://github.com/leandrocm86/lanpush-cli\n"
@@ -96,8 +96,8 @@ public final class Lanpush {
 
     private static void senderMode(List<String> sysArgs) {
 
-        String[] ips = sysArgs.get(0).split(":")[0].split(",");
-        String port = sysArgs.get(0).split(":")[1];
+        String[] ips = sysArgs.get(0).split("@")[0].split(",");
+        String port = sysArgs.get(0).split("@")[1];
         String msg = sysArgs.get(1);
 
         try {
