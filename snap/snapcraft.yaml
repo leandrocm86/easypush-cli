@@ -1,23 +1,23 @@
 # Execute with 'snapcraft' when inside the project's root folder.
-# The resulting snap can then be installed with 'sudo snap install lanpush-cli_x.y.z_amd64.snap' # additional flags for development:--devmode --dangerous
-# To publish the snap, run 'snapcraft push lanpush-cli_<version>_<arch>.snap'
+# The resulting snap can then be installed with 'sudo snap install easypush-cli_x.y.z_amd64.snap' # additional flags for development:--devmode --dangerous
+# To publish the snap, run 'snapcraft push easy-cli_<version>_<arch>.snap'
 
-name: lanpush # you probably want to 'snapcraft register <name>'
+name: easypush # you probably want to 'snapcraft register <name>'
 base: core20 # the base snap is the execution environment for this snap
 version: '1.1-SNAPSHOT'
-summary: Utility to exchange text messages between devices in the same local network.
+summary: Multi-platform utility to easily exchange text messages between devices.
 description: |
-  This is the CLI version (terminal only) client for LANPUSH.
-  With LANPUSH all devices in the same LAN can read and write messages between themselves.
-  No internet or login required!
-  Run "lanpush --help" for usage info.
+  This is the CLI version (terminal only) client for EasyPush.
+  EasyPush is a multi-platform and serverless (decentralized) utility to easily exchange text messages between devices through any given UDP port.
+  No login or any account required! Not even an internet connection is necessary (as long as your devices are on the same local network).
+  Run "easypush --help" for usage info.
 
 grade: stable # must be 'stable' to release into candidate/stable channels, or 'devel' to release into development channels
 confinement: strict # use 'strict' once you have the right plugs and slots, or 'devmode' for development only
 
 apps:
-  lanpush:
-    command: lanpush-cli.sh
+  easypush:
+    command: easy-cli.sh
     plugs:
       - network
     environment:
@@ -26,7 +26,7 @@ apps:
 
 # --- CONFIGURATION FOR LOCAL BUILD ---
 parts:
-  lanpush:   
+  easypush:   
     plugin: dump
     source: target/
     build-packages:

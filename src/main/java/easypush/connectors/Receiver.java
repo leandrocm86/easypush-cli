@@ -1,4 +1,4 @@
-package lanpush.connectors;
+package easypush.connectors;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -17,7 +17,7 @@ public class Receiver {
 	
 	/**
 	 * Starts listenning on the given port until there is a message to return or #stop() is invoked.
-	 * It's recommended to call this method in a separated thread if the current thread cannot be block.
+	 * It's recommended to call this method in a separated thread if the current thread cannot be blocked.
 	 * 
 	 * @param udpPort - The UDP port number to listen to.
 	 * 

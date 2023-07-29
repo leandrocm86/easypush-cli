@@ -1,4 +1,4 @@
-package lanpush.connectors;
+package easypush.connectors;
 
 
 import java.io.IOException;

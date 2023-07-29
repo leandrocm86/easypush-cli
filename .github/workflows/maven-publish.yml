@@ -25,8 +25,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload
-      run: mkdir staging && cp target/lanpush-cli.jar staging/lanpush-cli.jar
+      run: mkdir staging && cp target/easypush-cli.jar staging/easypush-cli.jar
     - uses: actions/upload-artifact@v2
       with:
-        name: lanpush-cli
-        path: staging/lanpush-cli.jar
+        name: easypush-cli
+        path: staging/easypush-cli.jar
