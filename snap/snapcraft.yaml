@@ -1,6 +1,6 @@
 # Execute with 'snapcraft' when inside the project's root folder.
 # The resulting snap can then be installed with 'sudo snap install easypush-cli_x.y.z_amd64.snap' # additional flags for development:--devmode --dangerous
-# To publish the snap, run 'snapcraft push easy-cli_<version>_<arch>.snap'
+# To publish the snap, run 'snapcraft push easypush-cli_<version>_<arch>.snap'
 
 name: easypush # you probably want to 'snapcraft register <name>'
 base: core20 # the base snap is the execution environment for this snap
@@ -17,7 +17,7 @@ confinement: strict # use 'strict' once you have the right plugs and slots, or '
 
 apps:
   easypush:
-    command: easy-cli.sh
+    command: easypush-cli.sh
     plugs:
       - network
     environment:
